@@ -130,7 +130,9 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/small_round_button"
-            android:text="@string/restart" />
+            android:drawableStart="@drawable/ic_refresh_white_60dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp" />
 
         <Button
             android:id="@+id/buttonStart"
@@ -142,7 +144,9 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/round_button"
-            android:text="@string/start" />
+            android:drawableStart="@drawable/ic_play_arrow_black_80dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp" />
 
         <Button
             android:id="@+id/buttonStop"
@@ -154,7 +158,9 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/small_round_button"
-            android:text="@string/stop" />
+            android:drawableStart="@drawable/ic_pause_white_60dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

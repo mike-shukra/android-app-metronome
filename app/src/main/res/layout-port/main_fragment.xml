@@ -141,7 +141,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/small_round_button"
-            android:drawableStart="@drawable/ic_stop_white_60dp"
+            android:drawableStart="@drawable/ic_pause_white_60dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp" />
     </LinearLayout>

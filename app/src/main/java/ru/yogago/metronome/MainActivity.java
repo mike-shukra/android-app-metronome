@@ -16,17 +16,23 @@ public class MainActivity extends AppCompatActivity {
 
     private final String LOG_TAG = "metronomeLog";
     private ActionBar actionBar;
+    private MainFragment mainFragment;
+    private AboutFragment aboutFragment;
+    private SettingsFragment settingsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         if (savedInstanceState == null) {
+            this.mainFragment = MainFragment.newInstance();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
+                    .replace(R.id.container, this.mainFragment)
                     .commitNow();
         }
         this.actionBar = getSupportActionBar();
+        this.aboutFragment = new AboutFragment();
+        this.settingsFragment = new SettingsFragment();
     }
 
     @Override
@@ -41,15 +47,15 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.home:
-                replaceFragment(new MainFragment());
+                replaceFragment(this.mainFragment);
                 return true;
             case R.id.about:
-                replaceFragment(new AboutFragment());
+                replaceFragment(this.aboutFragment);
 //                Intent intent = new Intent(this, AboutActivity.class);
 //                startActivity(intent);
                 return true;
             case R.id.settings:
-                replaceFragment(new SettingsFragment());
+                replaceFragment(this.settingsFragment);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
