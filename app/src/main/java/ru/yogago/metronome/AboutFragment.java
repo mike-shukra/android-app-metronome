@@ -1,4 +1,4 @@
-package ru.yogago.mtronome;
+package ru.yogago.metronome;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import ru.yogago.mtronome.R;
 
 public class AboutFragment extends Fragment {
     @Override
@@ -13,9 +14,4 @@ public class AboutFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.about, container, false);
     }
-
-    public String getTitleStringId(){
-        return "about";
-    }
-
 }

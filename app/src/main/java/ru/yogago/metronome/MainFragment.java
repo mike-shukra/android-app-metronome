@@ -1,6 +1,5 @@
-package ru.yogago.mtronome.ui.main;
+package ru.yogago.metronome;
 
-import androidx.lifecycle.ViewModelProviders;
 
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -9,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import ru.yogago.mtronome.R;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,8 +18,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import ru.yogago.mtronome.R;
 
 public class MainFragment extends Fragment implements SoundPool.OnLoadCompleteListener {
 
@@ -51,7 +50,6 @@ public class MainFragment extends Fragment implements SoundPool.OnLoadCompleteLi
         this.timerView = (TextView) v.findViewById(R.id.timer);
         this.countMinView = (EditText) v.findViewById(R.id.min);
         this.countSecView = (EditText) v.findViewById(R.id.sec);
-//        v.setTitle(R.string.app_name);
         Button buttonStart = (Button) v.findViewById(R.id.buttonStart);
         buttonStart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -127,8 +125,5 @@ public class MainFragment extends Fragment implements SoundPool.OnLoadCompleteLi
     }
     public int getViewSec(){
         return Integer.parseInt(countSecView.getText().toString());
-    }
-    public String getTitleStringId(){
-        return "app_name";
     }
 }

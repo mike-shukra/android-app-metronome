@@ -1,4 +1,4 @@
-package ru.yogago.mtronome.ui.main;
+package ru.yogago.metronome;
 
 import android.os.AsyncTask;
 import android.util.Log;

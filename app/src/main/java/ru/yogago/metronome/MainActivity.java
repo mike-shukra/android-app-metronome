@@ -1,18 +1,16 @@
-package ru.yogago.mtronome;
+package ru.yogago.metronome;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import ru.yogago.mtronome.ui.main.MainFragment;
+import ru.yogago.mtronome.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,16 +40,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.settings:
-                replaceFragment(new SettingsFragment());
+            case R.id.home:
+                replaceFragment(new MainFragment());
                 return true;
             case R.id.about:
                 replaceFragment(new AboutFragment());
 //                Intent intent = new Intent(this, AboutActivity.class);
 //                startActivity(intent);
                 return true;
-            case R.id.home:
-                replaceFragment(new MainFragment());
+            case R.id.settings:
+                replaceFragment(new SettingsFragment());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -63,9 +61,6 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
-//        String stringId = fragment.getTitleStringId();
-//        actionBar.setTitle(R.string.stringId);
-
     }
 
 }

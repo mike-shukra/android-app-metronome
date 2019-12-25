@@ -1,4 +1,4 @@
-package ru.yogago.mtronome;
+package ru.yogago.metronome;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import ru.yogago.mtronome.R;
 
 public class SettingsFragment extends Fragment {
 
@@ -136,9 +137,4 @@ public class SettingsFragment extends Fragment {
         Log.d(LOG_TAG, "*** SettingsFragment onDestroyView: " + this.sound);
         super.onDestroyView();
     }
-
-    public String getTitleStringId(){
-        return "setings";
-    }
-
 }

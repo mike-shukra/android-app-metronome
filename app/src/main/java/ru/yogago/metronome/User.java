@@ -1,4 +1,4 @@
-package ru.yogago.mtronome.ui.main;
+package ru.yogago.metronome;
 
 class User {
     private final String firstname;

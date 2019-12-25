@@ -17,17 +17,6 @@
     <string name="sound_four">Sound four</string>
     <string name="sound_five">Sound five</string>
 
-    <string-array name="entries_sound">
-        <item>Sound one</item>
-        <item>Sound two</item>
-        <item>Sound three</item>
-    </string-array>
-    <string-array name="entry_values_sound">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-
     <string name="about_head">About this app.</string>
     <string name="text_about">Metronome for yoga and sports. Many exercises and yoga asanas need to be performed for a certain amount of time. 20 seconds or 50 — choose a sound and count blows.</string>
     <string name="version">Version 0.1</string>

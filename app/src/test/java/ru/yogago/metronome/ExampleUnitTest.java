@@ -1,4 +1,4 @@
-package ru.yogago.mtronome;
+package ru.yogago.metronome;
 
 import org.junit.Test;
 

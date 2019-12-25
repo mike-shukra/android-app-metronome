@@ -1,4 +1,4 @@
-package ru.yogago.mtronome.ui.main;
+package ru.yogago.metronome;
 
 import android.database.Cursor;
 import android.util.Log;
@@ -6,7 +6,6 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import ru.yogago.mtronome.DBHelper;
 
 public class MainViewModel extends ViewModel {
     // TODO: Implement the ViewModel
