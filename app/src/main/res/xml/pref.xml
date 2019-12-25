@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    <ListPreference-->
+<!--        android:key="sound"-->
+<!--        android:title="Sound"-->
+<!--        android:summary="choice sound"-->
+<!--        android:entries="@array/entries_sound"-->
+<!--        android:entryValues="@array/entry_values_sound"-->
+<!--        android:defaultValue="2"-->
+<!--        />-->
+</PreferenceScreen>
