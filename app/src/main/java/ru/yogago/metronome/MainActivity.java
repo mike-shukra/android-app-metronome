@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.home:
-                replaceFragment(this.mainFragment);
-                return true;
+//            case R.id.home:
+//                replaceFragment(this.mainFragment);
+//                return true;
             case R.id.about:
                 replaceFragment(this.aboutFragment);
 //                Intent intent = new Intent(this, AboutActivity.class);
