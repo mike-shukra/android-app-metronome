@@ -89,8 +89,8 @@ public class MainViewModel extends ViewModel {
         super.onCleared();
     }
 
-    boolean setViewTimer(String time) {
-    return this.mainFragment.setViewTimer(time);
+    void setViewTimer(String time) {
+        this.mainFragment.setViewTimer(time);
     }
 
     void setCountSecond(int countSecond) {

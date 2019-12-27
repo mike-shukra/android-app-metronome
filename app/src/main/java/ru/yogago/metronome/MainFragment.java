@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,7 @@ import android.widget.TextView;
 
 public class MainFragment extends Fragment implements SoundPool.OnLoadCompleteListener {
 
-    private final String LOG_TAG = "metronomeLog";
+//    private final String LOG_TAG = "metronomeLog";
     private MainViewModel mViewModel;
     private TextView timerView;
     private EditText countMinView;
@@ -28,10 +27,10 @@ public class MainFragment extends Fragment implements SoundPool.OnLoadCompleteLi
 
     private SoundPool sp;
     private int soundIdShot;
-    private boolean action = true;
 
     public void onStart() {
         super.onStart();
+
 //        MainViewModel mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
 //        Log.d(LOG_TAG, "MainFragment mViewModel: " + mViewModel.getUser());
     }
@@ -39,10 +38,16 @@ public class MainFragment extends Fragment implements SoundPool.OnLoadCompleteLi
     static MainFragment newInstance() {
         return new MainFragment();
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.action = true;
         View v = inflater.inflate(R.layout.main_fragment, container, false);
 
         this.timerView = (TextView) v.findViewById(R.id.timer);
@@ -103,12 +108,9 @@ public class MainFragment extends Fragment implements SoundPool.OnLoadCompleteLi
         countSecView.setText(String.valueOf(this.mViewModel.getSec()));
     }
 
-    boolean setViewTimer(String time) {
+    void setViewTimer(String time) {
         this.timerView.setText(time);
         this.sp.play(this.soundIdShot, 1, 1, 0, 0, 1);
-        Log.d(LOG_TAG, "setViewTimer: " + action);
-    return action;
-
     }
     @Override
     public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
@@ -125,6 +127,6 @@ public class MainFragment extends Fragment implements SoundPool.OnLoadCompleteLi
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.action = false;
+        this.mViewModel.stopAction();
     }
 }

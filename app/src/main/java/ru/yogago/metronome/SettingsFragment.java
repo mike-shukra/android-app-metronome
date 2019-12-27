@@ -9,15 +9,17 @@ import android.widget.RadioGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import ru.yogago.metronome.R;
 
 public class SettingsFragment extends Fragment {
 
-//    private final String LOG_TAG = "metronomeLog";
     private SettingsModel settingsModel;
-    private RadioGroup soundCheck;
-    static int lastCheckedId = 0;
     private int sound;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,13 +28,12 @@ public class SettingsFragment extends Fragment {
         this.settingsModel = ViewModelProviders.of(this).get(SettingsModel.class);
         this.settingsModel.setFragment(this);
         this.settingsModel.dataBaseInit();
-        this.soundCheck = (RadioGroup) v.findViewById(R.id.soundCheck);
+        RadioGroup soundCheck = (RadioGroup) v.findViewById(R.id.soundCheck);
         RadioButton radioSound1 = (RadioButton) v.findViewById(R.id.radioSound1);
         RadioButton radioSound2 = (RadioButton) v.findViewById(R.id.radioSound2);
         RadioButton radioSound3 = (RadioButton) v.findViewById(R.id.radioSound3);
         RadioButton radioSound4 = (RadioButton) v.findViewById(R.id.radioSound4);
         RadioButton radioSound5 = (RadioButton) v.findViewById(R.id.radioSound5);
-//        Log.d(LOG_TAG, "***this.mViewModel.getSound(): " + this.settingsModel.getSound());
 
         switch (this.settingsModel.getSound()){
             case 1:
@@ -83,8 +84,8 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        this.lastCheckedId = soundCheck.getCheckedRadioButtonId();
-        switch (this.lastCheckedId) {
+        int lastCheckedId = soundCheck.getCheckedRadioButtonId();
+        switch (lastCheckedId) {
             case R.id.radioSound1:
                 this.sound = 1;
                 break;
@@ -106,11 +107,9 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        .actionBar.setTitle(R.string.settings);
-//        Log.d(LOG_TAG, "*** SettingsFragment onActivityCreated: " + this.settingsModel.hashCode());
     }
 
-    public void radioSoundClicked(int sound){
+    private void radioSoundClicked(int sound){
         switch(sound) {
             case 1:
                 this.sound = 1;
@@ -133,7 +132,6 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onDestroyView() {
         this.settingsModel.setDbSound(this.sound);
-//        Log.d(LOG_TAG, "*** SettingsFragment onDestroyView: " + this.sound);
         super.onDestroyView();
     }
 }

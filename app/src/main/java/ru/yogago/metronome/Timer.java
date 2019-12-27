@@ -37,7 +37,7 @@ class Timer extends AsyncTask<String, Integer, Void> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-        if (!this.mainViewModel.setViewTimer(values[0].toString())) this.isStop = true;
+        this.mainViewModel.setViewTimer(values[0].toString());
     }
     @Override
     protected void onPostExecute(Void result) {

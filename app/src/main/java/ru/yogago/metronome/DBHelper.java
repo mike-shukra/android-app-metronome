@@ -39,16 +39,16 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(int countSecond, int min, int sec, int sound){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2, countSecond);
-        contentValues.put(COL_3, min);
-        contentValues.put(COL_4, sec);
-        contentValues.put(COL_5, sound);
-        long result = db.insert(TABLE_NAME, null, contentValues);
-        return result != -1;
-    }
+//    public boolean insertData(int countSecond, int min, int sec, int sound){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put(COL_2, countSecond);
+//        contentValues.put(COL_3, min);
+//        contentValues.put(COL_4, sec);
+//        contentValues.put(COL_5, sound);
+//        long result = db.insert(TABLE_NAME, null, contentValues);
+//        return result != -1;
+//    }
 
     Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
