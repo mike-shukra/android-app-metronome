@@ -1,16 +1,13 @@
 package ru.yogago.metronome;
 
 import android.database.Cursor;
-import android.util.Log;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class MainViewModel extends ViewModel {
     // TODO: Implement the ViewModel
-    private final MutableLiveData<User> userLiveData = new MutableLiveData<>();
-    private final String LOG_TAG = "metronomeLog";
+//    private final MutableLiveData<User> userLiveData = new MutableLiveData<>();
+//    private final String LOG_TAG = "metronomeLog";
     private MainFragment mainFragment;
     private DBHelper myDb;
     private Timer timer;
@@ -21,30 +18,26 @@ public class MainViewModel extends ViewModel {
 
     public MainViewModel() {
         super();
-        Log.d(LOG_TAG, "MainViewModel: " + this.hashCode());
     }
 
-    public void setFragment(MainFragment mainFragment) {
+    void setFragment(MainFragment mainFragment) {
         this.mainFragment = mainFragment;
     }
 
-    public LiveData<User> getUser() {
-        return userLiveData;
-    }
+//    public LiveData<User> getUser() {
+//        return userLiveData;
+//    }
 
-    public void dataBaseInit(){
-        // создаем объект для создания и управления версиями БД
+    void dataBaseInit(){
         myDb = new DBHelper(this.mainFragment.getContext());
 
         updateAllUserData();
 
     }
 
-    public void updateAllUserData() {
-        Log.d(LOG_TAG, "--- Rows in mytable: ---");
+    private void updateAllUserData() {
         Cursor res = myDb.getAllData();
         if (res.getCount() == 0) {
-            Log.d(LOG_TAG, "Error. Nothing found \n");
             return;
         }
         while(res.moveToNext()){
@@ -53,17 +46,15 @@ public class MainViewModel extends ViewModel {
             this.min = Integer.parseInt(res.getString(2));
             this.sec = Integer.parseInt(res.getString(3));
             this.sound = Integer.parseInt(res.getString(4));
-            Log.d(LOG_TAG, "getAllData: id: " + id + " countSecond: " + countSecond + " min: " + min + " sec: " + sec + " sound: " + sound);
+//            Log.d(LOG_TAG, "getAllData: id: " + id + " countSecond: " + countSecond + " min: " + min + " sec: " + sec + " sound: " + sound);
         }
     }
 
-    public void setDbMinSec(int min, int sec){
-        boolean isUpdate = myDb.updateData(1, min, sec, this.countSecond);
-        if (isUpdate) Log.d(LOG_TAG, "isUpdate: " + isUpdate);
-        else Log.d(LOG_TAG, "Error. isUpdate: " + isUpdate);
+    private void setDbMinSec(int min, int sec){
+        myDb.updateData(1, min, sec, this.countSecond);
+//        if (isUpdate) Log.d(LOG_TAG, "isUpdate: " + isUpdate);
+//        else Log.d(LOG_TAG, "Error. isUpdate: " + isUpdate);
     }
-
-
 
     void doAction() {
         if(this.timer == null) {
@@ -74,14 +65,14 @@ public class MainViewModel extends ViewModel {
         timer.resume();
     }
 
-    public void stopAction() {
+    void stopAction() {
         if (this.timer != null) {
             this.timer.stop();
             this.timer = null;
         }
     }
 
-    public void restartAction(){
+    void restartAction(){
         if (this.timer != null) {
             this.timer.stop();
             this.timer = null;
@@ -96,32 +87,29 @@ public class MainViewModel extends ViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
-        Log.d(LOG_TAG, "MainViewModel onCleared: " + this.hashCode());
     }
 
-    public void setViewTimer(String time) {
-        this.mainFragment.setViewTimer(time);
-
+    boolean setViewTimer(String time) {
+    return this.mainFragment.setViewTimer(time);
     }
 
-    public void setCountSecond(int countSecond) {
-        Log.d(LOG_TAG, "MainViewModel setCountSecond: " + countSecond);
+    void setCountSecond(int countSecond) {
         this.countSecond = countSecond;
     }
 
-    public int getCountSecond() {
+    int getCountSecond() {
         return countSecond;
     }
 
-    public int getSound() {
+    int getSound() {
         return this.sound;
     }
 
-    public int getMin() {
+    int getMin() {
         return min;
     }
 
-    public int getSec() {
+    int getSec() {
         return sec;
     }
 

@@ -2,6 +2,7 @@ package ru.yogago.metronome;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
 import java.util.concurrent.TimeUnit;
 
 class Timer extends AsyncTask<String, Integer, Void> {
@@ -11,7 +12,7 @@ class Timer extends AsyncTask<String, Integer, Void> {
     private boolean isStop;
     private int countSecond;
 
-    public Timer(MainViewModel mainViewModel, int countSecond) {
+    Timer(MainViewModel mainViewModel, int countSecond) {
         this.mainViewModel = mainViewModel;
         this.countSecond = countSecond;
         this.isStop = true;
@@ -36,7 +37,7 @@ class Timer extends AsyncTask<String, Integer, Void> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-        this.mainViewModel.setViewTimer(values[0].toString());
+        if (!this.mainViewModel.setViewTimer(values[0].toString())) this.isStop = true;
     }
     @Override
     protected void onPostExecute(Void result) {
@@ -55,7 +56,7 @@ class Timer extends AsyncTask<String, Integer, Void> {
         this.isStop = true;
     }
 
-    public void setMainViewModel(MainViewModel mainViewModel) {
+    void setMainViewModel(MainViewModel mainViewModel) {
         this.mainViewModel = mainViewModel;
     }
 

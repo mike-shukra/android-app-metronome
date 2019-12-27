@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import ru.yogago.mtronome.R;
+import ru.yogago.metronome.R;
 
 public class AboutFragment extends Fragment {
     @Override

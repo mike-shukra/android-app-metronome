@@ -1,7 +1,6 @@
 package ru.yogago.metronome;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +9,11 @@ import android.widget.RadioGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import ru.yogago.mtronome.R;
+import ru.yogago.metronome.R;
 
 public class SettingsFragment extends Fragment {
 
-    private final String LOG_TAG = "metronomeLog";
+//    private final String LOG_TAG = "metronomeLog";
     private SettingsModel settingsModel;
     private RadioGroup soundCheck;
     static int lastCheckedId = 0;
@@ -33,7 +32,7 @@ public class SettingsFragment extends Fragment {
         RadioButton radioSound3 = (RadioButton) v.findViewById(R.id.radioSound3);
         RadioButton radioSound4 = (RadioButton) v.findViewById(R.id.radioSound4);
         RadioButton radioSound5 = (RadioButton) v.findViewById(R.id.radioSound5);
-        Log.d(LOG_TAG, "***this.mViewModel.getSound(): " + this.settingsModel.getSound());
+//        Log.d(LOG_TAG, "***this.mViewModel.getSound(): " + this.settingsModel.getSound());
 
         switch (this.settingsModel.getSound()){
             case 1:
@@ -108,7 +107,7 @@ public class SettingsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 //        .actionBar.setTitle(R.string.settings);
-        Log.d(LOG_TAG, "*** SettingsFragment onActivityCreated: " + this.settingsModel.hashCode());
+//        Log.d(LOG_TAG, "*** SettingsFragment onActivityCreated: " + this.settingsModel.hashCode());
     }
 
     public void radioSoundClicked(int sound){
@@ -134,7 +133,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onDestroyView() {
         this.settingsModel.setDbSound(this.sound);
-        Log.d(LOG_TAG, "*** SettingsFragment onDestroyView: " + this.sound);
+//        Log.d(LOG_TAG, "*** SettingsFragment onDestroyView: " + this.sound);
         super.onDestroyView();
     }
 }

@@ -10,13 +10,11 @@ import android.view.MenuItem;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import ru.yogago.mtronome.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String LOG_TAG = "metronomeLog";
+//    private final String LOG_TAG = "metronomeLog";
     private ActionBar actionBar;
-    private MainFragment mainFragment;
     private AboutFragment aboutFragment;
     private SettingsFragment settingsFragment;
 
@@ -25,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         if (savedInstanceState == null) {
-            this.mainFragment = MainFragment.newInstance();
+            MainFragment mainFragment = MainFragment.newInstance();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, this.mainFragment)
+                    .replace(R.id.container, mainFragment)
                     .commitNow();
         }
         this.actionBar = getSupportActionBar();
@@ -69,4 +67,8 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

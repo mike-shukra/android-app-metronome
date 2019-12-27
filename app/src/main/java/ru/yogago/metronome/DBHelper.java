@@ -5,27 +5,26 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private final String LOG_TAG = "metronomeLog";
-    public final static String DATABASE_NAME = "userValue.db";
-    public final static String TABLE_NAME = "data_table";
-    public final static String COL_1 = "ID";
-    public final static String COL_2 = "countSecond";
-    public final static String COL_3 = "min";
-    public final static String COL_4 = "sec";
-    public final static String COL_5 = "sound";
+//    private final String LOG_TAG = "metronomeLog";
+    private final static String DATABASE_NAME = "userValue.db";
+    private final static String TABLE_NAME = "data_table";
+    private final static String COL_1 = "ID";
+    private final static String COL_2 = "countSecond";
+    private final static String COL_3 = "min";
+    private final static String COL_4 = "sec";
+    private final static String COL_5 = "sound";
 
-    public DBHelper(@Nullable Context context) {
+    DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.d(LOG_TAG, "--- onCreate database ---");
+//        Log.d(LOG_TAG, "--- onCreate database ---");
         db.execSQL("create table " + TABLE_NAME + " (ID integer primary key autoincrement, countSecond integer, min integer, sec integer, sound integer)");
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, 300);
@@ -48,41 +47,40 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(COL_4, sec);
         contentValues.put(COL_5, sound);
         long result = db.insert(TABLE_NAME, null, contentValues);
-        if (result == -1) return false;
-        else return true;
+        return result != -1;
     }
 
-    public Cursor getAllData(){
+    Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
     }
 
-    public boolean updateData(int id, int countSecond, int min, int sec, int sound) {
+//    public boolean updateData(int id, int countSecond, int min, int sec, int sound) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put(COL_1, id);
+//        contentValues.put(COL_2, countSecond);
+//        contentValues.put(COL_3, min);
+//        contentValues.put(COL_4, sec);
+//        contentValues.put(COL_5, sound);
+//        db.update(TABLE_NAME, contentValues, "ID = ?", new String[] {String.valueOf(id)});
+//
+//        return true;
+//    }
+
+    boolean updateData(int id, int min, int sec, int countSecond) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1, id);
         contentValues.put(COL_2, countSecond);
         contentValues.put(COL_3, min);
         contentValues.put(COL_4, sec);
-        contentValues.put(COL_5, sound);
         db.update(TABLE_NAME, contentValues, "ID = ?", new String[] {String.valueOf(id)});
 
         return true;
     }
 
-    public boolean updateData(int id, int min, int sec, int countSecond) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1, id);
-        contentValues.put(COL_2, countSecond);
-        contentValues.put(COL_3, min);
-        contentValues.put(COL_4, sec);
-        db.update(TABLE_NAME, contentValues, "ID = ?", new String[] {String.valueOf(id)});
-
-        return true;
-    }
-
-    public boolean updateData(int id, int sound) {
+    boolean updateData(int id, int sound) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1, id);
@@ -92,8 +90,8 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public Integer deleteData(int id){
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME, "ID = ?", new String[] {String.valueOf(id)});
-    }
+//    public Integer deleteData(int id){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        return db.delete(TABLE_NAME, "ID = ?", new String[] {String.valueOf(id)});
+//    }
 }
